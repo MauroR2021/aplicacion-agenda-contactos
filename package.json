@@ -1,0 +1,19 @@
+{
+  "name": "api_agenda_contactos",
+  "version": "1.0.0",
+  "description": "Api agenda de contactos",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "author": "Mauro Ramírez",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-myconnection": "^1.0.4",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1"
+  }
+}

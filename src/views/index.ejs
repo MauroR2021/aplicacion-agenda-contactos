@@ -1,0 +1,102 @@
+<%- include('partials/_header') %>
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-title">
+                    <h3 class="text-center">Formulario Ingreso Contacto Nuevo</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/addContact" method="post">
+                        <div class="input-group mb-2">
+                            <label for="" class="col-1 col-form-label">Nombre</label>
+                            <input type="text" name="name" placeholder="Escribe tu nombre" class="form-control">
+                        </div>
+                        <div class="input-group mb-2">
+                            <label for="" class="col-1 col-form-label">Teléfono</label>
+                            <input type="number" name="phone" placeholder="Escribe tu telefono" class="form-control">
+                        </div>
+                        <div class="input-group mb-2">
+                            <label for="" class="col-1 col-form-label">Fecha de Nacimiento</label>
+                           <input type="date" name="date"class="form-control">
+                        </div>
+                        <div class="input-group mb-2">
+                            <label for="" class="col-1 col-form-label">Dirección</label>
+                            <input type="text" name="address" placeholder="Escribe tu direccion" class="form-control">
+                        </div>
+                        <div class="input-group mb-2">
+                            <label for="" class="col-1 col-form-label">Correo</label>
+                            <input type="text" name="email" placeholder="Escribe tu correo" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Crear contacto</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row mt-5">
+        <form class="row row-cols-lg-auto g-3 align-items-center" action="/" method="post">
+            <div class="col-12">
+                <label for="">Seleccione el tipo de filtro de búsqueda</label>
+                <select name="filter" class="form-select">
+                    <option value="">Seleccione una opción</option>
+                    <option value="name">Nombre</option>
+                    <option value="phone">Teléfono</option>
+                    <option value="email">Correo</option>
+                </select>
+            </div>
+            <div class="col-12">
+                <label for="">Digite</label>
+                <input type="text" name="valuef" class="form-control">
+                
+            </div>
+            <div class="col-12">
+                <br>
+              <button type="submit" class="btn btn-success">Buscar</button>
+            </div>
+        </form>
+        
+    </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            <h3 class="text-center">Lista de contactos</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="table-success">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Fecha de Nacimiento</th>
+                            <th>Edad</th>
+                            <th>Teléfono</th>
+                            <th>Dirección</th>
+                            <th>Correo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if(data) { %>
+                            <% for(var i=0; i < data.length; i++) {%>
+                                <tr>
+                                    <td><%= data[i].name %></td>
+                                    <td><%= data[i].date %></td>
+                                    <td><%= data[i].years %></td>
+                                    <td><%= data[i].phone %></td>
+                                    <td><%= data[i].address %></td>
+                                    <td><%= data[i].email %></td>
+                                    <td>
+                                        <a href="/delete/<%= data[i].id %>" class="btn btn-danger btn-sm">Borrar</a>
+                                        <a href="/updateContact/<%= data[i].id %>" class="btn btn-warning btn-sm">Actualizar</a>
+                                    </td>
+                                </tr>
+                            <% } %>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/_footer') %>
